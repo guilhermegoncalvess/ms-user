@@ -1,8 +1,8 @@
 {
   "type": "postgres",
-  "host": "db",
-  "port": 5433,
-  "username": "postgres",
+  "host": "db-user",
+  "port": 5432,
+  "username": "ms-user",
   "password": "ms-user",
   "database": "users",
   "entities": ["./src/models/*.ts"],

@@ -1,12 +1,12 @@
-import { hash } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 import { getRepository } from 'typeorm';
 import AppError from '../errors/AppError';
 
 import User from '../models/User';
 
 interface Request {
-  name: string;
-  lastName: string;
+  name?: string;
+  lastName?: string;
   email: string;
   password: string;
 }
@@ -38,6 +38,29 @@ class UserService {
     });
 
     await userRepository.save(user);
+
+    return user;
+  }
+
+  public async isAuthenticated({
+    email,
+    password,
+  }: Request): Promise<User> {
+    const userRepository = getRepository(User);
+
+    const user = await userRepository.findOne({
+      where: { email },
+    });
+
+    if(!user) {
+      throw new AppError('Incorrect email/password combination.', 401);
+    }
+
+    const passwordMatched = await compare(password, user.password);
+
+    if(!passwordMatched){
+      throw new AppError('Incorrect email/password combination.', 401);
+    }
 
     return user;
   }

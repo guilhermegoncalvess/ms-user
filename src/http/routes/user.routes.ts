@@ -28,6 +28,14 @@ userRouter.post('/', async (request, response) => {
   return response.json(user);
 });
 
+userRouter.post('/login', async (request, response) => {
+  const userController = new UserController();
+
+  const user = await userController.authenticate(request);
+
+  return response.json(user);
+});
+
 userRouter.put('/:id', async (request, response) => {
   const userController = new UserController();
 

@@ -36,6 +36,18 @@ export default class UserController {
     return user;
   }
 
+  async authenticate(payload: any): Promise<User> {
+    const { email, password } = payload.body;
+    const createUser = new CreateUserService();
+
+    const user = await createUser.isAuthenticated({
+      email,
+      password,
+    });
+
+    return user;
+  }
+
   async update(payload: any): Promise<User> {
     const { id } = payload.params;
     const { name, lastName, email, password } = payload.body;
