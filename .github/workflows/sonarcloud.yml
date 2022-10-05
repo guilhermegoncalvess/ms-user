@@ -1,6 +1,8 @@
 name: Code quality analysis (SonarCloud)
 
 on: pull_request
+permissions: read
+
 jobs:
   sonarcloud:
     name: SonarCloud
