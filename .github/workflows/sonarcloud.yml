@@ -1,6 +1,6 @@
 name: Code quality analysis (SonarCloud)
 
-on: pull_request
+on: push
 permissions: read
 
 jobs:
