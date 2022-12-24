@@ -1,6 +1,6 @@
 {
   "type": "postgres",
-  "host": "db-user",
+  "host": "postgres.default.svc.cluster.local",
   "port": 5432,
   "username": "postgres",
   "password": "postgres",
