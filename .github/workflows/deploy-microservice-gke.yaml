@@ -68,4 +68,3 @@ jobs:
       run: |-
         kubectl apply -f kubernetes.yaml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o wide
