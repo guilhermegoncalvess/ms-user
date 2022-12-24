@@ -25,3 +25,25 @@ spec:
         - name: POSTGRES_PASSWORD
           value: postgres
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  labels:
+    app: postgres
+  name: postgres
+  namespace: default
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: postgres
+  type: ClusterIP

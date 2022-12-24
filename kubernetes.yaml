@@ -21,6 +21,7 @@ spec:
         - image: gcr.io/learning-357114/ms-user:1.0.0
           name: ms-user
           resources: {}
+          imagePullPolicy: Always
 status: {}
 ---
 apiVersion: v1
@@ -29,8 +30,8 @@ metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
   labels:
-    app: postgres
-  name: postgres
+    app: ms-user
+  name: ms-user
   namespace: default
 spec:
   internalTrafficPolicy: Cluster
@@ -38,9 +39,9 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - port: 5432
+  - port: 50051
     protocol: TCP
-    targetPort: 5432
+    targetPort: 50051
   selector:
-    app: postgres
+    app: ms-user
   type: ClusterIP
