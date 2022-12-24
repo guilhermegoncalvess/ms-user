@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ms-user
+  name: ms-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-user
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ms-user
+    spec:
+      containers:
+        - image: gcr.io/learning-357114/ms-user:1.0.0
+          name: ms-user
+          resources: {}
+status: {}
