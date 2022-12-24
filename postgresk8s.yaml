@@ -22,6 +22,6 @@ spec:
         name: postgres
         resources: {}
         env:
-          - name: POSTGRES_PASSWORD
-          - value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
 status: {}
