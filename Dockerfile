@@ -9,5 +9,5 @@ COPY . .
 RUN yarn add ts-node-dev --dev
 RUN yarn install
 
-EXPOSE 3333
+EXPOSE 3335
 CMD ["yarn", "start"]

@@ -15,7 +15,11 @@ userRouter.get('/', async (request, response) => {
 userRouter.get('/:id', async (request, response) => {
   const userController = new UserController();
 
-  const user = await userController.findById(request);
+  const user = await userController.findById({
+    ...request.params,
+    ...request.body,
+    ...request.query,
+  });
 
   return response.json(user);
 });
