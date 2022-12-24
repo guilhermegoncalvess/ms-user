@@ -8,18 +8,18 @@ export default class UserController {
   async findAll(): Promise<User[]> {
     const userRepository = getCustomRepository(UserRepository);
 
-    const users = await userRepository.find();
+    const data = await userRepository.find();
 
-    return users;
+    return data;
   }
 
   async findById(payload: any): Promise<User> {
-    const { id } = payload.params;
+    const { id } = payload;
     const userRepository = getCustomRepository(UserRepository);
 
-    const users = await userRepository.findById(id);
-
-    return users;
+    const data = await userRepository.findById(id);
+    console.log(data);
+    return data;
   }
 
   async create(payload: any): Promise<User> {
