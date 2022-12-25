@@ -66,27 +66,27 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: ms-user
+            name: ms-user.svc.cluster.local
             port:
               number: 3333
       - path: /products
         pathType: ImplementationSpecific
         backend:
           service:
-            name: ms-catalog
+            name: ms-catalog.svc.cluster.local
             port:
-              number: 3334
+              number: 3333
       - path: /cart
         pathType: ImplementationSpecific
         backend:
           service:
-            name: ms-cart
+            name: ms-cart.svc.cluster.local
             port:
               number: 3333
       - path: /order
         pathType: ImplementationSpecific
         backend:
           service:
-            name: ms-order
+            name: ms-order.svc.cluster.local
             port:
               number: 3333
