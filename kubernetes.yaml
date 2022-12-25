@@ -42,10 +42,12 @@ spec:
   - port: 50051
     protocol: TCP
     targetPort: 50051
+  - port: 3333
+    protocol: TCP
+    targetPort: 3333
   selector:
     app: ms-user
   type: ClusterIP
----
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
