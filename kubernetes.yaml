@@ -51,28 +51,20 @@ spec:
       - path: /user
         pathType: ImplementationSpecific
         backend:
-          service:
-            name: ms-user
-            port:
-              number: 3333
+          serviceName: ms-user
+          servicePort: 80
       - path: /products
         pathType: ImplementationSpecific
         backend:
-          service:
-            name: ms-catalog
-            port:
-              number: 3333
+          serviceName: ms-catalog
+          servicePort: 80
       - path: /cart
         pathType: ImplementationSpecific
         backend:
-          service:
-            name: ms-cart
-            port:
-              number: 3333
+          serviceName: ms-cart
+          servicePort: 80
       - path: /order
         pathType: ImplementationSpecific
         backend:
-          service:
-            name: ms-order
-            port:
-              number: 3333
+          serviceName: ms-order
+          servicePort: 80
