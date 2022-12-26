@@ -23,14 +23,26 @@ spec:
           resources: {}
           imagePullPolicy: Always
           ports:
-            - containerPort: 3333
+            - name: defaut
+              containerPort: 3333
               protocol: TCP
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 443
+            readinessProbe:
+              httpGet:
+                path: /healthcheck
+                scheme: HTTP
+                port: 80
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: ms-user
+  annotaitons:
+    cloud.google.com/neg: '{"ingress": true}'
 spec:
   type: NodePort
   selector:
