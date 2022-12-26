@@ -43,7 +43,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: microservices-cluster-ingress
+  name: microservices-cluster
   annotations:
     # If the class annotation is not specified it defaults to "gce".
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -54,20 +54,28 @@ spec:
       - path: /user
         pathType: ImplementationSpecific
         backend:
-          serviceName: ms-user
-          servicePort: 3333
+          service:
+            name: ms-user
+            port:
+              number: 3333
       - path: /products
         pathType: ImplementationSpecific
         backend:
-          serviceName: ms-catalog
-          servicePort: 3333
+          service:
+            name: ms-catalog
+            port:
+              number: 3333
       - path: /cart
         pathType: ImplementationSpecific
         backend:
-          serviceName: ms-cart
-          servicePort: 3333
+          service:
+            name: ms-cart
+            port:
+              number: 3333
       - path: /order
         pathType: ImplementationSpecific
         backend:
-          serviceName: ms-order
-          servicePort: 3333
+          service:
+            name: ms-order
+            port:
+              number: 3333
