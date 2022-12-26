@@ -30,7 +30,7 @@ spec:
               path: /user
               scheme: HTTP
               port: 3333
-            initialDelaySeconds: 15
+            initialDelaySeconds: 5
             timeoutSeconds: 15
             failureThreshold: 1
             periodSeconds: 15
