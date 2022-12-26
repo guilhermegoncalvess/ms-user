@@ -39,7 +39,7 @@ spec:
     - port: 3333
       protocol: TCP
       targetPort: 3333
-  readinessProbe:
+  startupProbe:
     httpGet:
       path: /user
       scheme: HTTP
