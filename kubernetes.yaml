@@ -67,13 +67,6 @@ spec:
                 name: ms-catalog
                 port:
                   number: 3333
-          - path: /cart
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: ms-cart
-                port:
-                  number: 3333
           - path: /order
             pathType: ImplementationSpecific
             backend:
