@@ -48,7 +48,7 @@ spec:
   selector:
     app: ms-user
   ports:
-    - port: 3333
+    - port: 80
       protocol: TCP
       targetPort: 3333
 ---
