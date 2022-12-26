@@ -1,9 +1,9 @@
 {
   "type": "postgres",
-  "host": "postgres.default.svc.cluster.local",
+  "host": "34.66.220.82",
   "port": 5432,
   "username": "postgres",
-  "password": "postgres",
+  "password": "Z3xiADLa|bh#%$k;",
   "database": "postgres",
   "entities": [
     "./src/models/*.ts"
