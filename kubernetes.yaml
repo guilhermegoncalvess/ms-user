@@ -34,7 +34,7 @@ spec:
     app: ms-user
   ports:
   - protocol: TCP
-    port: 3333
+    port: 80
     targetPort: 3333
 ---
 apiVersion: networking.k8s.io/v1
