@@ -11,4 +11,4 @@ RUN yarn install
 
 EXPOSE 3333
 
-CMD ["yarn", "migration:run", "&", "yarn", "start"]
+CMD ["yarn", "run typeorm migration:run", "&", "yarn", "start"]
