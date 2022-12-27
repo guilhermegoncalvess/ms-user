@@ -30,15 +30,27 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: ms-user
-spec:
-  type: NodePort
-  selector:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  labels:
     app: ms-user
+  name: ms-user
+  namespace: default
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
+    - port: 50051
+      protocol: TCP
+      targetPort: 50051
     - port: 3333
       protocol: TCP
       targetPort: 3333
+  selector:
+    app: ms-user
+  type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
