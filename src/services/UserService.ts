@@ -1,8 +1,9 @@
 import { hash, compare } from 'bcryptjs';
-import { getRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import AppError from '../errors/AppError';
 
 import User from '../models/User';
+import UserRepository from '../repositories/UserRepository';
 
 interface Request {
   name?: string;
@@ -52,18 +53,58 @@ class UserService {
       where: { email },
     });
 
-    if(!user) {
+    if (!user) {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
     const passwordMatched = await compare(password, user.password);
 
-    if(!passwordMatched){
+    if (!passwordMatched) {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
     return user;
   }
+
+  async findAll(): Promise<User[]> {
+    const userRepository = getCustomRepository(UserRepository);
+
+    const data = await userRepository.find();
+
+    return data;
+  }
+
+  async findById(id: any): Promise<User> {
+    const userRepository = getCustomRepository(UserRepository);
+
+    const data = await userRepository.findById(id);
+    return data;
+  }
+
+  async update(payload: any): Promise<User> {
+    const { id, name, lastName, email, password } = payload;
+
+    const userRepository = new UserRepository();
+
+    const user = await userRepository.alter({
+      id,
+      name,
+      lastName,
+      email,
+      password,
+    });
+
+    return user;
+  }
+
+  async remove(id: any): Promise<any> {
+    const userRepository = new UserRepository();
+
+    await userRepository.deleteUser(id);
+
+    return { status: 'Usuário exluído com sucesso!' };
+  }
+
 }
 
 export default UserService;

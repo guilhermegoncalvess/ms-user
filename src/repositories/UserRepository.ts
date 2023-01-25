@@ -36,6 +36,7 @@ class UserRepository extends Repository<User> {
       where: { id },
     });
 
+    console.log(id, user)
     if (!user) {
       throw new AppError('user does not exist.', 404);
     }

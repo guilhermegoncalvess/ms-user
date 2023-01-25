@@ -1,30 +1,23 @@
-import { getCustomRepository } from 'typeorm';
 import User from '../models/User';
 
-import CreateUserService from '../services/CreateUserService';
-import UserRepository from '../repositories/UserRepository';
+import UserService from '../services/UserService';
 
 export default class UserController {
   async findAll(): Promise<User[]> {
-    const userRepository = getCustomRepository(UserRepository);
-
-    const data = await userRepository.find();
-
-    return data;
+    const userService = new UserService();
+    return userService.findAll();
   }
 
   async findById(payload: any): Promise<User> {
     const { id } = payload;
-    const userRepository = getCustomRepository(UserRepository);
+    const userService = new UserService();
 
-    const data = await userRepository.findById(id);
-    console.log(data);
-    return data;
+    return userService.findById(id);
   }
 
   async create(payload: any): Promise<User> {
     const { name, lastName, email, password } = payload.body;
-    const createUser = new CreateUserService();
+    const createUser = new UserService();
 
     const user = await createUser.execute({
       name,
@@ -38,9 +31,9 @@ export default class UserController {
 
   async authenticate(payload: any): Promise<User> {
     const { email, password } = payload.body;
-    const createUser = new CreateUserService();
+    const userService = new UserService();
 
-    const user = await createUser.isAuthenticated({
+    const user = await userService.isAuthenticated({
       email,
       password,
     });
@@ -52,9 +45,9 @@ export default class UserController {
     const { id } = payload.params;
     const { name, lastName, email, password } = payload.body;
 
-    const userRepository = new UserRepository();
+    const userService = new UserService();
 
-    const user = await userRepository.alter({
+    const user = userService.update({
       id,
       name,
       lastName,
@@ -68,10 +61,8 @@ export default class UserController {
   async remove(payload: any): Promise<any> {
     const { id } = payload.params;
 
-    const userRepository = new UserRepository();
+    const userService = new UserService();
 
-    await userRepository.deleteUser(id);
-
-    return { status: 'Usuário exluído com sucesso!' };
+    return userService.remove(id);
   }
 }
