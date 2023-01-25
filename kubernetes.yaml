@@ -92,7 +92,7 @@ spec:
                 port:
                   number: 3333
           - path: /order
-            pathType: ImplementationSpecific
+            pathType: prefix
             backend:
               service:
                 name: ms-order
