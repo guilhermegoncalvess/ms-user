@@ -2,11 +2,11 @@
 
 This repository is part of my final graduation project that aimed to develop a prototype system for e-commerce based on microservices.
 
-#### Problem Description
+### Problem Description
 
 What requirements are needed to create and develop cloud-native software systems based on microservices architecture?
 
-#### Domain Description
+### Domain Description
 
 The e-commerce application is a software system that acts as part of a set of services that contribute to the availability and access to data that simulate the process of listing, selecting and purchasing products. The application has domains related to the  aspects of e-commerce sales and purchases, such as User domains, Product Catalog, Shopping Cart and Orders.
 
