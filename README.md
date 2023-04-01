@@ -98,5 +98,5 @@ With all the provisioning and deployment steps completed, it is possible to use 
 * [Order Microservice](https://github.com/guilhermegoncalvess/ms-order)
 * [Sender Microservice](https://github.com/guilhermegoncalvess/ms-sender)
   
-### Technologies
+### Technologies Used
 NodeJS, Express, Python, gRPC, SMTP, Docker, Kubernetes, Github Actions, C4 Model, Google Cloud Platform (GCP), Google Cloud SQL, Google Kubernetes Engine(GKE), Google Cloud Client Libraries, Google Cloud PubSub, MongoDB Atlas.
